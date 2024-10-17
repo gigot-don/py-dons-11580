@@ -1,0 +1,238 @@
+variable:
+- clef: donateur
+  label: Donateur
+  type: group
+  children:
+  - clef: donateur_nom
+    label: Nom
+    type: string
+  - clef: donateur_prenoms
+    label: Prénoms
+    type: string
+  - clef: donateur_adresse
+    label: Adresse
+    type: group
+    children:
+    - clef: donateur_adresse_numero
+      label: Numéro
+      type: string
+    - clef: donateur_adresse_rue
+      label: Rue
+      type: string
+    - clef: donateur_adresse_cp
+      label: Code Postal
+      type: string
+    - clef: donateur_adresse_commune
+      label: Commune
+      type: string
+    - clef: donateur_adresse_pays
+      label: Pays
+      type: string
+- clef: don
+  label: Don
+  type: group
+  children:
+  - clef: forme_don
+    label: Forme
+    type: radio
+    children:
+    - clef: forme_don-acte_authentique
+      label: Acte authentique
+      type: radio-option
+    - clef: forme_don-acte_prive
+      label: Acte sous seing privé
+      type: radio-option
+    - clef: forme_don-don_manuel
+      label: Don manuel
+      type: radio-option
+    - clef: forme_don-autres
+      label: Autres
+      type: radio-option
+  - clef: nature_don
+    label: Nature
+    type: radio
+    children:
+    - clef: nature_don-numeraire
+      label: Numéraire
+      type: radio-option
+    - clef: nature_don-titres
+      label: Titres de sociétés côtées
+      type: radio-option
+    - clef: nature_don-abandon_revenus_produits
+      label: Abandon de revenus et produits
+      type: radio-option
+    - clef: nature_don-frais_benevoles
+      label: Frais de bénévole (renoncement au remboursement)
+      type: radio-option
+    - clef: nature_don-autres
+      label: Autres
+      type: radio-option
+      details:
+      - clef: details-nature_don-autres
+        label: Préciser
+        type: string
+- clef: signature
+  label: Document
+  type: group
+  children:
+  - clef: signature_date
+    label: Daté du
+    type: string
+  - clef: signature_image
+    label: Signature
+    type: image-picker
+config:
+- clef: benef
+  label: Bénéficiaire
+  type: group
+  children:
+  - clef: nom_benef
+    label: Nom
+    type: string
+  - clef: num_siren_rna
+    label: Numéro SIREN ou RNA
+    type: string
+  - clef: adresse
+    label: Adresse
+    type: group
+    children:
+    - clef: adresse_numero
+      label: Numéro
+      type: string
+    - clef: adresse_rue
+      label: Rue
+      type: string
+    - clef: adresse_cp
+      label: Code Postal
+      type: string
+    - clef: adresse_commune
+      label: Commune
+      type: string
+    - clef: adresse_pays
+      label: Pays
+      type: string
+  - clef: objet
+    label: Objet
+    type: string
+  - clef: type_orga
+    label: Type d'organisme
+    type: radio
+    children:
+    - clef: type_orga-oig
+      label: Organisme d'intérêt général ayant un caractère [...]
+      type: radio-option
+      details:
+      - clef: type_oig
+        label: Préciser
+        type: radio
+        children:
+        - clef: type_oig-1901
+          label: Association loi 1901
+          type: radio-option
+        - clef: type_oig-utilite_publique
+          label: Association / fondation reconnue d'utilité publique
+          type: radio-option
+          details:
+          - clef: details-oig_utilite_publique-date_decret
+            label: Date décret
+            type: string
+          - clef: details-oig_utilite_publique-date_JO
+            label: Date publication au JO
+            type: string
+          - clef: details-oig_utilite_publique-date_alsace_moselle
+            label: Date arrêté (si en Alsace Moselle)
+            type: string
+        - clef: type_oig-fondation_education
+          label: Fondation universitaire (elevant du code de l'éducation)
+          type: radio-option
+        - clef: type_oig-fondation_entreprise
+          label: Fondation d'entreprise
+          type: radio-option
+        - clef: type_oig-musee
+          label: Musée de France
+          type: radio-option
+        - clef: type_oig-osbl_caritative
+          label: OSBL fournissant gratuitement aide alimentaire, soins médicaux [...]
+          type: radio-option
+        - clef: type_oig-collectivite_foret
+          label: Communes ou groupements forestiers (Art. 200 CGI, 1 - f ter)
+          type: radio-option
+        - clef: type_oig-autres
+          label: Autres
+          type: radio-option
+          details:
+          - clef: details-oig_autres
+            label: Préciser (collectivités locales, Etat, GIP...)
+            type: string
+    - clef: type_orga-cultuelle
+      label: Association cultuelle, établissement public reconnu (Alsace Moselle)
+      type: radio-option
+    - clef: type_orga-dotation
+      label: Fonds de dotation
+      type: radio-option
+    - clef: type_orga-presse
+      label: Association d'intérêt général pour le pluralisme de la presse
+      type: radio-option
+    - clef: type_orga-esr
+      label: Etablissement supérieur ou artistique d'intérêt général
+      type: radio-option
+    - clef: type_orga-esr_consulaire
+      label: Etablissement supérieur consulaire (Code commerce L711-17)
+      type: radio-option
+    - clef: type_orga-pme
+      label: Aide financière et accompagnement aux PME
+      type: radio-option
+    - clef: type_orga-diff_art
+      label: Organisme désintéressé de diffusion d'art
+      type: radio-option
+    - clef: type_orga-monuments
+      label: Fondation du patrimoine et/ou participant aux travaux sur monuments
+      type: radio-option
+      details:
+      - clef: details-monuments-date_agrement
+        label: Date agrément
+        type: string
+    - clef: type_orga-svg_guerre
+      label: Organisme de sauvegarde culturelle contre les effets des guerres
+      type: radio-option
+    - clef: type_orga-recherche
+      label: Etablissement de recherche d'intérêt général
+      type: radio-option
+    - clef: type_orga-insertion_travail
+      label: Entreprise d'insertion
+      type: radio-option
+    - clef: type_orga-intermediaire
+      label: Association intermédiaire
+      type: radio-option
+    - clef: type_orga-insertion_chantier
+      label: Ateliers et chantiers d'insertion
+      type: radio-option
+    - clef: type_orga-adaptee
+      label: Entreprise adaptée
+      type: radio-option
+    - clef: type_orga-anr
+      label: Agence Nationale de la Recherche
+      type: radio-option
+    - clef: type_orga-insertion_qualification
+      label: Groupement d'employeurs pour l'insertion et la qualification
+      type: radio-option
+    - clef: type_orga-crea_reprise_entreprises
+      label: Association d'utilité publique pour la création et reprise d'entreprises
+      type: radio-option
+    - clef: type_orga-UE
+      label: Organisme hors France (en UE, Norvège, Islance ou Liechtenstein) similaire à une catégorie précédente 
+      type: radio-option
+      details:
+      - clef: details-orga_UE-date_agrement
+        label: Date agrément
+        type: string
+- clef: article_cgi
+  label: Motif de la réduction d'impôts d'après le Code Général des Impôts (CGI)
+  type: radio
+  children:
+  - clef: article_cgi_200
+    label: Article 200
+    type: radio-option
+  - clef: article_cgi_978
+    label: Article 978
+    type: radio-option
